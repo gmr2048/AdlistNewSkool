@@ -6,5 +6,5 @@ sudo apt update
 sudo apt-get dist-upgrade -y
 /opt/pihole/update/PiholeAggAdlistUpdate.sh
 sudo pihole -g
-rm /opt/pihole/update/outfiles/outfile
+rm /opt/pihole/update/outfiles/outfile*
 pkill python3
