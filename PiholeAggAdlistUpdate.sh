@@ -2,8 +2,6 @@
 
 #cron job to do this daily
 
-mkdir /tmp/PiHole
-
 #curl download all the individual lists
 	curl https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts --output /opt/pihole/update/outfiles/StevenBlackHosts.txt
 	curl https://s3.amazonaws.com/lists.disconnect.me/simple_tracking.txt --output /opt/pihole/update/outfiles/simple_tracking.txt
