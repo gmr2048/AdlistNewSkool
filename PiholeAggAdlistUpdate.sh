@@ -1,6 +1,5 @@
 #!/bin/bash
 
-#C:\Users\Gary.DESKTOP-J47QPHF\Downloads\pihole-lists
 #cron job to do this daily
 
 mkdir /tmp/PiHole
@@ -13,15 +12,15 @@ mkdir /tmp/PiHole
 	curl https://v.firebog.net/hosts/static/w3kbl.txt --output /home/gmr2048/Documents/PiHole/outfiles/w3kbl.txt
 	curl https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Alternate%20versions%20Anti-Malware%20List/AntiMalwareHosts.txt --output /tmp/PiHole/outfiles/AntiMalwareHosts.txt
 	curl https://v.firebog.net/hosts/RPiList-Malware.txt --output /tmp/PiHole/outfiles/RPiList-Malware.txt
-	curl https://v.firebog.net/hosts/RPiList-Phishing.txt --output /tmp/PiHole/outfiles/RPiList-Phishing.txt
-	curl https://v.firebog.net/hosts/Admiral.txt --output /tmp/PiHole/outfiles/Admiral.txt
+	curl https:v.firebog.net/hosts/RPiList-Phishing.txt --output /tmp/PiHole/outfiles/RPiList-Phishing.txt
+	curl https:v.firebog.net/hosts/Admiral.txt --output /tmp/PiHole/outfiles/Admiral.txt
 	curl https://v.firebog.net/hosts/Prigent-Malware.txt --output /tmp/PiHole/outfiles/Prigent-Malware.txt
-	curl https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.plus.txt --output /tmp/PiHole/outfiles/hagezi-pro.plus.txt
+	curl https:raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.plus.txt --output /tmp/PiHole/outfiles/hagezi-pro.plus.txt
 	curl https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/tif.txt --output /tmp/PiHole/outfiles/hagezi-tif.txt
 	curl https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/native.tiktok.txt  --output /tmp/PiHole/outfiles/hagezi-tiktok.txt
 
-#combine lists, remove dupes and blank lines, remove all comment lines, split into 400k1B line files
-	cat /home/gmr2048/Documents/PiHole/outfiles/*.txt | grep -v '^\s*$' | sort -u | sed '/^#/d' | split -l1000000000 - /tmp/PiHole/outfiles/outfile_
+#combine lists, remove dupes and blank lines, remove all comment lines, split into single 1-billion line file(s)
+	cat /tmp/PiHole/outfiles/*.txt | grep -v '^\s*$' | sort -u | sed '/^#/d' | split -l1000000000 - /tmp/PiHole/outfiles/outfile_
 
 #clean up source text files
 	rm /tmp/PiHole/outfiles/*.txt
