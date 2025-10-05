@@ -20,7 +20,7 @@ mkdir /tmp/PiHole
 	curl https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/native.tiktok.txt  --output /opt/pihole/update/outfiles/hagezi-tiktok.txt
 
 #combine lists, remove dupes and blank lines, remove all comment lines, split into single 1-billion line file(s)
-	cat /tmp/PiHole/outfiles/*.txt | grep -v '^\s*$' | sort -u | sed '/^#/d' | split -l1000000000 - /opt/pihole/update/outfiles/outfile_
+	cat /opt/pihole/update/outfiles/*.txt | grep -v '^\s*$' | sort -u | sed '/^#/d' | split -l1000000000 - /opt/pihole/update/outfiles/outfile_
 
 #clean up source text files
 	rm /opt/pihole/update/outfiles/*.txt
